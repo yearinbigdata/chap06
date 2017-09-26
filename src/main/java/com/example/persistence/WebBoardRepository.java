@@ -3,6 +3,7 @@ package com.example.persistence;
 import java.util.List;
 
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.CrudRepository;
@@ -12,7 +13,7 @@ import com.example.domain.WebBoard;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Predicate;
 
-public interface WebBoardRepository extends CrudRepository<WebBoard, Long>, QuerydslPredicateExecutor<WebBoard>{
+public interface WebBoardRepository extends JpaRepository<WebBoard, Long>, QuerydslPredicateExecutor<WebBoard>{
 
 	public default Predicate makePredicate(String type, String keyword){
 		
@@ -26,7 +27,7 @@ public interface WebBoardRepository extends CrudRepository<WebBoard, Long>, Quer
 			return builder;
 		}
 		
-		switch(type){
+		switch(type){		//다이나믹 쿼리
 		case "t":
 			builder.and(board.title.like("%" + keyword +"%"));
 			break;
