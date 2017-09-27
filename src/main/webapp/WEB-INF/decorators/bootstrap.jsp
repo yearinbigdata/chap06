@@ -26,6 +26,20 @@
 </head>
 <body class="container">
 	<header class="page-header">
+<!-- 		상단 고정 메뉴 -->
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">WebSiteName</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Home</a></li>
+					<li><a href="/boards/list">Thymeleaf list</a></li>
+					<li><a href="/board/list">JSP list</a></li>
+					<li><a href="/boards/view">Thymeleaf view</a></li>
+				</ul>
+			</div>
+		</nav>
 	</header>
 
 	<section class="panel panel-default">
