@@ -26,7 +26,6 @@ import lombok.extern.java.Log;
 @RequestMapping("/boards/")
 @Log
 public class WebBoardsController {
-
 	
 	@Autowired
 	private WebBoardRepository repo;
@@ -132,7 +131,7 @@ public class WebBoardsController {
 		log.info("TOTAL PAGE NUMBER: " + result.getTotalPages());
 		
 		
-		model.addAttribute("result", new PageMaker(result));
+		model.addAttribute("pageMaker", new PageMaker(result));
 				
 		return "thymeleaf/boards/list";
 	}
