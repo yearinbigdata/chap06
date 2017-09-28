@@ -32,6 +32,39 @@ public class WebBoardController {
 	@Inject
 	WebBoardRepository repo;
 
+	@GetMapping("/register")
+	public String registerGET(@ModelAttribute("vo")WebBoard vo ){
+		log.info("register get");
+//		vo.setTitle("샘플 게시물 제목입니다....");
+//		vo.setContent("내용을 처리해 봅니다 " );
+		vo.setWriter("user00");
+		
+		return "jsp/board/register";
+	}
+	
+	@PostMapping("/register")
+	public String registerPOST(@ModelAttribute("vo")WebBoard vo, RedirectAttributes rttr){
+		
+		log.info("register post");
+		log.info("" + vo);
+
+		repo.save(vo);
+		rttr.addFlashAttribute("msg", "success");
+		
+		return "redirect:/board/list";
+	}
+	
+	
+	@GetMapping("/view")
+	public String view(Long bno, @ModelAttribute("pageVO") PageVO vo, Model model){
+		
+		log.info("BNO: "+ bno);
+		
+		repo.findById(bno).ifPresent(board -> model.addAttribute("vo", board));
+		
+		return "jsp/board/view";
+	}
+	
 	@GetMapping("/list")
 	public String list(@ModelAttribute("xxx")PageVO vo, Model model){
 		
