@@ -5,7 +5,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.vo.PageMaker;
 import com.example.vo.PageVO;
 
 import lombok.extern.java.Log;
@@ -17,11 +16,10 @@ public class BootStrapController {
 
 	@GetMapping("/list")
 	public String list(PageVO vo, Model model){
+		log.info("/bootstrap/list...");
 		
-		log.info("/bootstrap/list....");
 		/*
 		 * DB 작업 수행
-		 * - 모델에 저장해야 한다.
 		 */
 		
 		model.addAttribute("pageMaker", null);
